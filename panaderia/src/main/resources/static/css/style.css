@@ -1,11 +1,22 @@
 /* static/css/style.css */
+
+/* Estilo general del body */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente moderna y amigable */
+    background-color: #fff8e1; /* Fondo cálido inspirado en la panadería */
+    margin: 0;
+    padding: 0;
+    color: #6b4226; /* Color marrón suave para el texto */
+}
+
+/* Imagen de fondo de la página */
 .bg-image {
     position: relative;
     width: 100%;
-    height: 400px; /* Ajusta la altura según necesidades */
+    height: 400px; /* Mantiene la altura previa */
     background-size: cover;
     background-position: center;
-    filter: grayscale(50%); /* Aplica un efecto de escala de grises */
+    filter: grayscale(50%); /* Mantiene el efecto en escala de grises */
 }
 
 .bg-image::after {
@@ -15,13 +26,131 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Capa oscura para mejorar la legibilidad del texto */
+    background: rgba(0, 0, 0, 0.3); /* Mantiene la capa oscura */
 }
 
+
+/* Navbar - Estilos generales */
+.navbar-nav .nav-item {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b4226; /* Marrón suave */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Efecto de hover */
+.navbar-nav .nav-link:hover {
+    color: #d2691e; /* Marrón tostado */
+    transform: scale(1.1); /* Hace que crezca un poco */
+}
+
+/* Línea animada debajo de los enlaces */
+.navbar-nav .nav-item::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d2691e; /* Marrón tostado */
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Transición cuando se despliega el menú en móviles */
+.navbar-collapse {
+    transition: max-height 0.5s ease-in-out;
+}
+
+/* Contenido dentro de la imagen */
 .content {
     position: relative;
     z-index: 1;
     color: white;
     text-align: center;
     padding: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Mejora la legibilidad */
+}
+
+/* Sección de "DÓNDE ENCONTRARNOS" */
+.ubicacion {
+    background-color: #fff8e1; /* Fondo cálido */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ubicacion h5 .badge {
+    background-color: #d2691e; /* Marrón tostado */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+
+.ubicacion p {
+    color: #6b4226; /* Marrón suave */
+}
+
+.ubicacion-img {
+    max-width: 80%;
+    border: 5px solid #e6ccb2; /* Borde beige */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.ubicacion-img:hover {
+    transform: scale(1.05);
+}
+
+.ubicacion .badge.bg-info {
+    background-color: #f4a261; /* Color miel */
+    color: #fff;
+}
+
+/* Encabezados generales */
+h3, h4, h5, h6 {
+    color: #d2691e; /* Marrón cálido */
+}
+
+
+/* Responsividad de videos */
+.responsive-iframe {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.responsive-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 15px;
+}
+
+/* Mejoras en la estructura de los títulos */
+.big-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #d2691e;
+}
+
+.big-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #6b4226;
 }
