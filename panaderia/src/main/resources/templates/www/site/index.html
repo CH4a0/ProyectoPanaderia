@@ -1,24 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      layout:decorate="~{/www/layout/base}">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/www/layout/base}">
+
 <head>
     <title>Inicio</title>
 </head>
-<body>
-<div layout:fragment="MainBase">
-    <!-- Imagen de fondo -->
-    <div class="bg-image" th:style="'background-image: url(' + @{/img/fotopan.jpg} + ');'">
-        <div class="content">
-            <h1>Bienvenido a nuestra Panadería</h1>
-            <p>Descubre los mejores productos de panadería.</p>
-        </div>
-    </div>
 
-    <!-- Contenido adicional de la página de inicio -->
-    <section>
-        <h2>Nuestros Productos</h2>
-        <p>Explora nuestra variedad de panes y pasteles.</p>
-    </section>
-</div>
+<body>
+    <div layout:fragment="MainBase">
+        <!-- Imagen de fondo -->
+        <div class="bg-image" th:style="'background-image: url(' + @{/img/fotopan.jpg} + ');'">
+            <div class="content">
+                <h1>Bienvenido a nuestra Panadería</h1>
+                <p>Descubre los mejores productos de panadería.</p>
+            </div>
+        </div>
+
+        <!-- Contenido adicional de la página de inicio -->
+        <section>
+            <h2>Nuestros Productos</h2>
+            <p>Explora nuestra variedad de panes y pasteles.</p>
+        </section>
+        <section>
+            <hr>
+            <!-- About Section -->
+            <div class="container py-5 text-center">
+                <h3 class="mb-4 display-5">Sobre nosotros</h3>
+                <!-- Imagen de sobre nosotros -->
+                <img th:src="@{/img/imagenbase.jpg}" alt="Me" class="img-fluid rounded mx-auto d-block" style="max-width: 800px; height: auto;">
+                <div class="py-5">
+                    <h4 class="fw-bold display-6">¡Somos quienes somos!</h4>
+                    <h6 class="fst-italic display-6">Con pasión por la verdadera y buena panadería.</h6>
+                    <p class="mx-auto lead" style="max-width: 600px;">
+                        El aroma del pan recién horneado despierta los sentidos y envuelve cada rincón con la calidez del hogar.
+                        Desde el amanecer, nuestras manos trabajan con pasión para transformar ingredientes simples en auténticas
+                        delicias que endulzan los días y crean recuerdos inolvidables. Nuestra historia comienza con un sueño: ofrecer
+                        productos artesanales que combinan tradición y calidad. Cada pan, cada pastel y cada galleta que sale de nuestro
+                        horno está hecho con dedicación, utilizando recetas que han pasado de generación en generación, junto con un toque
+                        de innovación que nos hace únicos.
+        
+                        Nos enorgullece seleccionar cuidadosamente los mejores ingredientes, frescos y naturales, para garantizar
+                        que cada bocado sea una experiencia inigualable. Más que una panadería, somos un rincón donde los sabores
+                        cobran vida, donde la textura crujiente de un croissant o la suavidad de un pan brioche cuentan su propia historia.
+                    </p>
+                </div>
+            </div>
+            <hr>
+        </section>
+        
+    </div>
 </body>
+
 </html>
