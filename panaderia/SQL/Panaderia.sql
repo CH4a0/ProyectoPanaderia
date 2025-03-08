@@ -2,7 +2,8 @@
 create table categoria (
     id int primary key,
     tipo varchar(50) unique,  -- <- ahora es UNIQUE
-    descripcion varchar(100)
+    descripcion varchar(100),
+    imagen varchar(255)
 );
 
 
@@ -13,9 +14,10 @@ create table productos (
     categoria VARCHAR(50),
     descripcion varchar(100),
     precio decimal(10,2) not null,
+    imagen varchar(255),
     foreign key (categoria) references categoria(tipo)
 );
-INSERT INTO categoria (id, tipo, descripcion) VALUES
+INSERT INTO categoria (id, tipo, descripcion, imagen) VALUES
 (1, 'Dulce', 'Productos de sabor dulce'),
 (2, 'Salado', 'Productos de sabor salado'),
 (3, 'Mixto', 'Productos que combinan dulce y salado'),
@@ -23,7 +25,7 @@ INSERT INTO categoria (id, tipo, descripcion) VALUES
 
 
  -- Productos Dulces (20)
-INSERT INTO productos (id, nombre, categoria, descripcion, precio) VALUES
+INSERT INTO productos (id, nombre, categoria, descripcion, precio, imagen) VALUES
 (1, 'Concha', 'Dulce', 'Pan dulce con costra de azúcar', 10.00),
 (2, 'Oreja', 'Dulce', 'Hojaldre dulce con azúcar', 8.50),
 (3, 'Cuernito de Chocolate', 'Dulce', 'Croissant relleno de chocolate', 12.00),
