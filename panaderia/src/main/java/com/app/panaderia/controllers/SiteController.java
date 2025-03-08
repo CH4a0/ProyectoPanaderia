@@ -9,4 +9,8 @@ public class SiteController {
     public String index() {
         return "www/site/index";
     }
+    @GetMapping("/contacto")
+    public String contacto() {
+        return "www/site/contacto";
+    }
 }
