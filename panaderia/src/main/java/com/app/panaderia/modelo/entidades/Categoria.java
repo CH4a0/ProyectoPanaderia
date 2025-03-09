@@ -1,5 +1,8 @@
 package com.app.panaderia.modelo.entidades;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,6 +18,7 @@ public class Categoria {
     private String tipo;
 
     @Column(nullable = false) 
+    @NotEmpty
     private String descripcion;
 
     @Column(nullable = false)
