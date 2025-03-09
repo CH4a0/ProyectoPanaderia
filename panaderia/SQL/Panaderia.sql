@@ -88,7 +88,7 @@ INSERT INTO productos (id, nombre, categoria, descripcion, precio, imagen) VALUE
 (48, 'Barra de pan tradicional', 'Pan', 'Barra de pan al estilo tradicional (solo forma)', 1.50, '/img/productos/pan/pan48.jpeg'),
 (49, 'Pan de molde', 'Pan', 'Pan de molde de trigo', 1.50, '/img/productos/pan/pan49.jpeg'),
 (50, 'Pan de molde integral', 'Pan', 'Pan de molde integral de trigo', 2.00, '/img/productos/pan/pan50.jpeg'),
-(51, 'Pan de picos', 'Pan', 'Pan de picos extra crujiente y con un toque de sal', 1.50, '/img/productos/pan/pan51.jpeg'),
+(51, 'Pan de picos', 'Pan', 'Pan de picos extra crujiente y con un toque de sal', 1.50, '/img/productos/pan/pan51.jpg'),
 (52, 'Pan especial la casa', 'Pan', 'Pan especial que solo hace nuestra panadería', 1.20, '/img/productos/pan/pan52.jpeg'),
 (53, 'Pan de espelta', 'Pan', 'Pan de espelta hecho al 100% con harina de espelta', 2.50, '/img/productos/pan/pan53.jpeg'),
 (54, 'Pan con nueces', 'Pan', 'Pan integral con un añadido de nueces', 2.00, '/img/productos/pan/pan54.jpeg'),
