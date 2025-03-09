@@ -102,6 +102,11 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
         </dependency>
+		<!-- dependencia de spring security -->
+		<dependency>
+  			 <groupId>org.springframework.boot</groupId>
+   			 <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
