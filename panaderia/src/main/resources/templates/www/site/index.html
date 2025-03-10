@@ -17,8 +17,35 @@
 
         <!-- Contenido adicional de la página de inicio -->
         <section>
-            <h2>Nuestros Productos</h2>
-            <p>Explora nuestra variedad de panes y pasteles.</p>
+            <h2 style="text-align: center; margin-top: 10px;">Nuestros productos</h2>
+            <p style="text-align: center; margin-top: 10px;">Descubre una amplia variedad de productos de panadería
+                frescos y deliciosos.</p>
+            <!-- Page Content -->
+            <div class="container mt-5">
+
+                <!-- First Photo Grid-->
+                <div class="row row-cols-1 row-cols-md-4 g-4 text-center" id="food">
+                    <div class="col">
+                        <img th:src="@{/img/productos/dulces/dulce4.jpeg}" alt="Dulces" class="img-fluid">
+                        <h3>Dulces</h3>
+                        <p>Deliciosos dulces para satisfacer tu antojo.</p>
+                    </div>
+                    <div class="col">
+                        <img th:src="@{/img/productos/mixto/mixto43.jpeg}" alt="Mixto" class="img-fluid">
+                        <h3>Mixto</h3>
+                        <p>Una mezcla perfecta de sabores para cada ocasión.</p>
+                    </div>
+                    <div class="col">
+                        <img th:src="@{/img/productos/pan/pan48.jpeg}" alt="Pan" class="img-fluid">
+                        <h3>Pan</h3>
+                        <p>Pan fresco y crujiente, recién horneado.</p>
+                    </div>
+                    <div class="col">
+                        <img th:src="@{/img/productos/salado/salado27.jpeg}" alt="Salado" class="img-fluid">
+                        <h3>Salado</h3>
+                        <p>Aperitivos salados para disfrutar en cualquier momento.</p>
+                    </div>
+                </div>
         </section>
         <section>
             <hr>
@@ -67,7 +94,7 @@
                     apariencia como en sabor.
                 </p>
             </section>
-            
+
             <hr>
             <div class="container py-5 text-center">
                 <div class="responsive-iframe">
