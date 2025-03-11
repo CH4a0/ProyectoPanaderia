@@ -1,18 +1,60 @@
 <header th:fragment="headerbase">
-  <!-- Barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" th:href="@{/admin}">Administración</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="/admin/gamas"><i class="bi bi-list"></i> Gamas</a></li>
-          <li class="nav-item"><a class="nav-link" href="/admin/productos"><i class="bi bi-box"></i> Productos</a></li>
-          <li class="nav-item"><a class="nav-link text-danger" href="/"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-        </ul>
+  <!-- Botón para abrir/cerrar el menú lateral -->
+  <button class="btn btn-dark btn-lg position-fixed" type="button" onclick="toggleSidebar()" style="font-size: 1.2rem; padding: 0.5rem 1rem; z-index: 1001; top: 1rem; left: 1rem;">
+      <i class="bi bi-list"></i> Menu
+  </button>
+
+  <!-- Sidebar -->
+  <nav class="bg-dark text-white sidebar" id="sidebar" style="width: 300px; position: fixed; top: 0; left: 0; height: 100%; z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease;">
+      <div class="p-3 h-100">
+          <h4 class="text-center text-white mb-4">Administración</h4>
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                  <a class="nav-link text-white" th:href="@{/admin/productos}" onclick="toggleSidebar()">
+                      <i class="bi bi-box-seam"></i> Gestionar Productos
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#" onclick="toggleSidebar()">
+                      <i class="bi bi-tags-fill"></i> Ver Categorías
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white" th:href="@{/}" onclick="toggleSidebar()">
+                      <i class="bi bi-gear-fill"></i> Logout
+                  </a>
+              </li>
+          </ul>
       </div>
-    </div>
   </nav>
+
+  <!-- Overlay para cerrar el menú al hacer clic fuera -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <script>
+      function toggleSidebar() {
+          const sidebar = document.getElementById('sidebar');
+          const overlay = document.getElementById('overlay');
+          if (sidebar.style.transform === 'translateX(0%)') {
+              sidebar.style.transform = 'translateX(-100%)';
+              overlay.style.display = 'none';
+          } else {
+              sidebar.style.transform = 'translateX(0%)';
+              overlay.style.display = 'block';
+          }
+      }
+  </script>
+
+  <style>
+      .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+          display: none;
+      }
+  </style>
 </header>

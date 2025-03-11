@@ -182,6 +182,7 @@ h3, h4, h5, h6 {
     color: #5b3a29;
 }
 
+
 /* Media queries para responsividad */
 @media (max-width: 1200px) {
     .bg-image { height: 350px; }
