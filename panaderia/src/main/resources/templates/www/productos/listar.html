@@ -17,9 +17,6 @@
                             <p class="card-text" th:text="${producto.descripcion}"></p>
                             <p class="card-text"><strong>Precio:</strong> $<span th:text="${producto.precio}"></span></p>
                         </div>
-                        <div class="card-footer text-center">
-                            <a th:href="@{/producto/{id}(id=${producto.id})}" class="btn btn-primary">Ver más</a>
-                        </div>
                     </div>
                 </div>
             </div>

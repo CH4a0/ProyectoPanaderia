@@ -63,9 +63,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return 
-                "<" + this.tipo + ","  
-                + this.descripcion + "," 
-                + this.imagen + ">";
+        return this.tipo;
     }
+    
 }
