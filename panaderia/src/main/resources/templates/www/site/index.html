@@ -22,30 +22,47 @@
                 frescos y deliciosos.</p>
             <!-- Page Content -->
             <div class="container mt-5">
-
-                <!-- First Photo Grid-->
-                <div class="row row-cols-1 row-cols-md-4 g-4 text-center" id="food">
-                    <div class="col">
-                        <img th:src="@{/img/productos/dulces/dulce4.jpeg}" alt="Dulces" class="img-fluid">
-                        <h3>Dulces</h3>
-                        <p>Deliciosos dulces para satisfacer tu antojo.</p>
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img th:src="@{/img/productos/dulces/dulce4.jpeg}" class="d-block mx-auto img-fluid" alt="Dulces">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Dulces</h3>
+                                <p>Deliciosos dulces para satisfacer tu antojo.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img/productos/pan/pan48.jpeg}" class="d-block mx-auto img-fluid" alt="Pan">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Pan</h3>
+                                <p>Pan fresco y crujiente, recién horneado.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img/productos/salado/salado27.jpeg}" class="d-block mx-auto img-fluid" alt="Salado">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Salado</h3>
+                                <p>Aperitivos salados para disfrutar en cualquier momento.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img/productos/mixto/mixto43.jpeg}" class="d-block mx-auto img-fluid" alt="Mixto">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Mixto</h3>
+                                <p>Una mezcla perfecta de sabores para cada ocasión.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <img th:src="@{/img/productos/pan/pan48.jpeg}" alt="Pan" class="img-fluid">
-                        <h3>Pan</h3>
-                        <p>Pan fresco y crujiente, recién horneado.</p>
-                    </div>
-                    <div class="col">
-                        <img th:src="@{/img/productos/salado/salado27.jpeg}" alt="Salado" class="img-fluid">
-                        <h3>Salado</h3>
-                        <p>Aperitivos salados para disfrutar en cualquier momento.</p>
-                    </div>
-                    <div class="col">
-                        <img th:src="@{/img/productos/mixto/mixto43.jpeg}" alt="Mixto" class="img-fluid">
-                        <h3>Mixto</h3>
-                        <p>Una mezcla perfecta de sabores para cada ocasión.</p>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+            </div>
         </section>
         <section>
             <hr>
