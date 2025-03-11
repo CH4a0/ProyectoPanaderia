@@ -26,8 +26,8 @@ public class AdminProductosController {
     @GetMapping("/admin/productos")
     public String productos() {
         System.out.println("Admin productos");
-        return "/admin/productos/index";  // Ruta a la vista de productos
-    }
+        return "/admin/productos/index"; 
+    }    
 
     // Ruta para crear un nuevo producto
     @GetMapping("/admin/productos/new")
