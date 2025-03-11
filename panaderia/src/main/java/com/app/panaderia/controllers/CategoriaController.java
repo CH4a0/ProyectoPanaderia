@@ -21,7 +21,7 @@ public class CategoriaController {
         System.out.println();
         List<Categoria> categorias = catServ.getAll();
         categorias.forEach(System.out::println);
-        modelo.addAttribute("LCategorias", categorias);
+        modelo.addAttribute("Lcategorias", categorias);
         return "www/categorias/listar";
     }
 }
