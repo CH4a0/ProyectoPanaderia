@@ -1,22 +1,20 @@
-/* static/css/style.css */
-
 /* Estilo general del body */
 body {
-    font-family: 'Poppins', sans-serif; /* Fuente moderna y amigable */
-    background-color: #fff8e1; /* Fondo cálido inspirado en la panadería */
+    font-family: 'Caveat', cursive;
+    background-color: #fefae0;
     margin: 0;
     padding: 0;
-    color: #6b4226; /* Color marrón suave para el texto */
+    color: #5b3a29;
 }
 
 /* Imagen de fondo de la página */
 .bg-image {
     position: relative;
     width: 100%;
-    height: 400px; /* Mantiene la altura previa */
+    height: 400px;
     background-size: cover;
     background-position: center;
-    filter: grayscale(50%); /* Mantiene el efecto en escala de grises */
+    filter: sepia(30%) brightness(90%);
 }
 
 .bg-image::after {
@@ -26,22 +24,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Mantiene la capa oscura */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
 }
 
 /* Navbar - Estilos generales */
-.navbar-nav .nav-item {
+.navbar-nav .nav-item,
+.navbar-nav .nav-link {
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #6b4226; /* Marrón suave */
-    position: relative;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #5b3a29;
     display: inline-block;
-    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* Efecto de subrayado creciente */
@@ -51,25 +48,24 @@ body {
     left: 0;
     bottom: -5px;
     width: 0%;
-    height: 2px;
-    background-color: #d2691e; /* Marrón tostado */
+    height: 3px;
+    background-color: #b5835a;
     transition: width 0.3s ease;
 }
 
 /* Animación de color y subrayado */
-.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link.active {
-    color: #d2691e; /* Marrón tostado */
-    transform: scale(1.1); /* Escala un poco el enlace */
+    color: #b5835a;
+    transform: scale(1.1);
 }
 
-.navbar-nav .nav-link:hover::after, 
-.navbar-nav .nav-link:focus::after, 
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link:focus::after,
 .navbar-nav .nav-link.active::after {
     width: 100%;
 }
-
 
 /* Contenido dentro de la imagen */
 .content {
@@ -78,49 +74,45 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Mejora la legibilidad */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Sección de "DÓNDE ENCONTRARNOS" */
 .ubicacion {
-    background-color: #fff8e1; /* Fondo cálido */
+    background-color: #fefae0;
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.ubicacion h5 .badge {
-    background-color: #d2691e; /* Marrón tostado */
+.ubicacion h5 .badge,
+.ubicacion .badge.bg-info {
+    background-color: #b5835a;
     color: white;
     font-size: 1.2rem;
     padding: 10px 20px;
 }
 
 .ubicacion p {
-    color: #6b4226; /* Marrón suave */
+    color: #5b3a29;
 }
 
-.ubicacion-img {
-    max-width: 80%;
-    border: 5px solid #e6ccb2; /* Borde beige */
-    border-radius: 10px;
+.ubicacion-img,
+img {
+    max-width: 100%;
+    border-radius: 15px;
     transition: transform 0.3s ease-in-out;
 }
 
-.ubicacion-img:hover {
+.ubicacion-img:hover,
+img.img-fluid:hover {
     transform: scale(1.05);
-}
-
-.ubicacion .badge.bg-info {
-    background-color: #f4a261; /* Color miel */
-    color: #fff;
 }
 
 /* Encabezados generales */
 h3, h4, h5, h6 {
-    color: #d2691e; /* Marrón cálido */
+    color: #b5835a;
 }
-
 
 /* Responsividad de videos */
 .responsive-iframe {
@@ -144,13 +136,50 @@ h3, h4, h5, h6 {
 
 /* Mejoras en la estructura de los títulos */
 .big-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: #d2691e;
+    color: #b5835a;
 }
 
 .big-text {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 500;
-    color: #6b4226;
+    color: #5b3a29;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 1200px) {
+    .bg-image { height: 350px; }
+}
+
+@media (max-width: 992px) {
+    .bg-image { height: 300px; }
+    .navbar-nav .nav-link { font-size: 1.1rem; }
+    .ubicacion { padding: 30px; }
+    .big-title { font-size: 1.85rem; }
+    .big-text { font-size: 1.25rem; }
+}
+
+@media (max-width: 768px) {
+    .bg-image { height: 250px; }
+    .navbar-nav .nav-link { font-size: 1rem; }
+    .ubicacion, #food img.img-fluid { padding: 20px; width: 80%; margin: 0 auto; }
+    .big-title { font-size: 1.75rem; }
+    .big-text { font-size: 1.2rem; }
+}
+
+@media (max-width: 576px) {
+    .bg-image { height: 200px; }
+    .navbar-nav .nav-link { font-size: 0.9rem; }
+    .ubicacion, #food img.img-fluid { padding: 15px; width: 100%; }
+    .big-title { font-size: 1.5rem; }
+    .big-text { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+    .bg-image { height: 150px; }
+    .navbar-nav .nav-link { font-size: 0.8rem; }
+    .ubicacion { padding: 10px; }
+    .big-title { font-size: 1.3rem; }
+    .big-text { font-size: 1rem; }
 }
