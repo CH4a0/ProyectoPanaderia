@@ -15,14 +15,18 @@ public class CategoriaService {
     CategoriaRepository catrep;
 
     public List<Categoria> getAll(){
-        return catrep.findAll();
+        List<Categoria> categorias = this.catrep.findAll();
+        return categorias;
     }
+
     public void create(Categoria cat){
         this.catrep.save(cat);
     }
+
     public void delete(int id){
         this.catrep.deleteById(id);
     }
+
     public Categoria getId(int id){
         return this.catrep.findById(id).get();
     }
