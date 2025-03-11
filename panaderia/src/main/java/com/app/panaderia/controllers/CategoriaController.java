@@ -16,6 +16,9 @@ public class CategoriaController {
 
     @GetMapping("/categorias")
     public String getCategoria(Model modelo) {
+        System.out.println();
+        System.out.println();
+        System.out.println();
         List<Categoria> categorias = catServ.getAll();
         categorias.forEach(System.out::println);
         modelo.addAttribute("LCategorias", categorias);
