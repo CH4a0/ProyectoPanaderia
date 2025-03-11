@@ -8,6 +8,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "admin/login"; // Asegúrate de tener un archivo "login.html" en templates
+        return "admin/login"; //Hay que tener un archivo login.html en templates
     }
 }
