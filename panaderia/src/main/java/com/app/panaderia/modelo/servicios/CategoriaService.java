@@ -23,12 +23,12 @@ public class CategoriaService {
         this.catrep.save(cat);
     }
 
-    public void delete(int id){
-        this.catrep.deleteById(id);
+    public void delete(String tipo){
+        this.catrep.deleteById(tipo);
     }
 
-    public Categoria getId(int id){
-        return this.catrep.findById(id).get();
+    public Categoria getId(String tipo){
+        return this.catrep.findById(tipo).get();
     }
 
 }
