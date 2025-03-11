@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+        layout:decorate="~{admin/layout/base}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <!-- No es necesario incluir las librerías aquí, ya que se hacen en base.html -->
 </head>
 <body>
-
-    <!-- Extiende de base.html -->
-    <div th:replace="~{/admin/layout/base}">
-
-        <!-- Main content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Bienvenido al Panel de Administración</h1>
-            </div>
-            <p>Aquí puedes gestionar todos los aspectos de tu sistema.</p>
-        </main>
-
+    <!-- Contenido específico para esta página -->
+    <div layout:fragment="mainBase">
+        <div class="container mt-4">
+            <h3>Bienvenido al Panel de Administración</h3>
+            <p>Aquí puedes gestionar tus gamas de productos y más.</p>
+        </div>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
