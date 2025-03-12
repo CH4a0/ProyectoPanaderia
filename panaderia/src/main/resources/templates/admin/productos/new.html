@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/admin/layout/base}">
 
-<div layout:fragment="MainBase">
+<main layout:fragment="mainBase">
     <div class="container mt-4">
         <h4>Nuevo Producto</h4>
 
-        <form th:action="@{/admin/productos/new}" th:object="${producto}" method="post">
+        <form th:action="@{/admin/productos/new}" th:object="${producto}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre del Producto</label>
                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
@@ -23,18 +24,18 @@
             <div class="mb-3">
                 <label for="categoria" class="form-label">Categoría</label>
                 <select class="form-select" id="categoria" th:field="*{categoria}" required>
-                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.tipo}"></option>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.tipo}" th:text="${categoria.tipo}"></option>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen</label>
-                <input type="file" class="form-control" id="imagen" th:field="*{imagen}">
+                <input type="file" class="form-control" id="imagen" name="imagen">
             </div>
 
             <button type="submit" class="btn btn-success">Guardar Producto</button>
         </form>
     </div>
-</div>
+</main>
 
 </html>

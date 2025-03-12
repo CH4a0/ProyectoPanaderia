@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "productos")
 public class Producto {
 
-    @Id // Primary Key
+    @Id
     private int id;
 
     @Column(nullable = false)
@@ -36,64 +36,65 @@ public class Producto {
     private double precio;
 
     @Column(nullable = false)
-    private String imagen;
+    private String imagen; // Ruta o URL de la imagen
 
+    // Constructor predeterminado
     public Producto() {
     }
 
+    // Constructor con parámetros
     public Producto(int id, String nombre, Categoria categoria, String descripcion, double precio, String imagen) {
-        this.setId(id);
-        this.setNombre(nombre);
-        this.setCategoria(categoria);
-        this.setDescripcion(descripcion);
-        this.setPrecio(precio);
-        this.setImagen(imagen);
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.imagen = imagen;
     }
 
-    // Getters
+    // Getters y setters
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getImagen() {
+        return imagen;
     }
 
     public void setImagen(String imagen) {
@@ -102,11 +103,12 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "<" + this.id + "," 
+        return "<" + this.id + ","
                 + this.nombre + ","
                 + this.categoria.getTipo() + ","
-                + this.descripcion + "," 
+                + this.descripcion + ","
                 + this.precio + ","
                 + this.imagen + ">";
     }
 }
+

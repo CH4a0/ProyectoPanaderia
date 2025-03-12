@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Jardinería Garden</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Administración panaderia </title>
     <!-- Bootstrap CSS -->
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/admin/index.css}" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="menu.png">
 </head>
 <body>
     <!-- El header -->
     <header th:replace="~{/admin/layout/components/header :: headerbase}"></header>
     
     <!-- Main Content que será sustituido en cada vista -->
-    <main layout:fragment="mainBase">
-        <!-- Este contenido será reemplazado por el contenido de las páginas que usen este layout -->
-    </main>
+    <div layout:fragment="mainBase">
     
     <!-- El footer -->
     <footer th:replace="~{/admin/layout/components/footer :: footerbase}"></footer>
