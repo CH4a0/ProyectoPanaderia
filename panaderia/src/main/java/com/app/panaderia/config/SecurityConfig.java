@@ -5,10 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+
 
 @Configuration
 @EnableWebSecurity
@@ -34,20 +31,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Service
-    public class EmailService {
-
-        @Autowired
-        private JavaMailSender mailSender;
-
-        public void enviarCorreo(String destinatario, String asunto, String mensaje) {
-            SimpleMailMessage email = new SimpleMailMessage();
-            email.setTo(destinatario);
-            email.setSubject(asunto);
-            email.setText(mensaje);
-            mailSender.send(email);
-        }
-    }
 }
 
 
