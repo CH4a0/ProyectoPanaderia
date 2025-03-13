@@ -127,7 +127,7 @@ public class AdminProductosController {
             System.out.println("Iniciando guardado de producto...");
     
             // 📌 Definir el directorio externo donde se guardarán las imágenes
-            String uploadDir = System.getProperty("user.dir") + "/img/"; // ⬅️ Guardar en "img/" en la raíz
+            String uploadDir = System.getProperty("user.dir") + "/imagenes/"; // ⬅️ Guardar en "img/" en la raíz
             Path directory = Paths.get(uploadDir);
     
             // ⚠️ Crear la carpeta si no existe
@@ -145,7 +145,7 @@ public class AdminProductosController {
                 Files.write(path, file.getBytes());
     
                 // 📌 Guardar solo la ruta relativa en la BD
-                producto.setImagen("/img/" + filename);
+                producto.setImagen("/imagenes/" + filename);
             } else {
                 producto.setImagen("/img/default.png"); // Imagen por defecto si no se sube ninguna
             }

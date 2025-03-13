@@ -10,12 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/img") // 📌 Ruta base para acceder a las imágenes
+@RequestMapping("/imagenes") // 📌 Ruta base para acceder a las imágenes
 public class FileController {
 
     @GetMapping("/{filename}")
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws MalformedURLException {
-        Path filePath = Paths.get(System.getProperty("user.dir") + "/img/").resolve(filename);
+        Path filePath = Paths.get(System.getProperty("user.dir") + "/imagenes").resolve(filename);
         Resource resource = new UrlResource(filePath.toUri());
 
         return ResponseEntity.ok().body(resource);

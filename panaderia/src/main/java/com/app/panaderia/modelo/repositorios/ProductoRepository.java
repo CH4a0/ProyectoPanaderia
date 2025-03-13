@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     @Query("SELECT p FROM Producto p WHERE p.categoria.tipo = :tipo")
     List<Producto> findByCategoriaTipo(@Param("tipo") String tipo);
+
+    
 }
