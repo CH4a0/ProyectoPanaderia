@@ -32,11 +32,19 @@ public class AdminProductosController {
 
     // Ruta para ver todos los productos en la sección de administración
     @GetMapping
-    public String listarProductos(Model model) {
-        List<Producto> productos = adminProductoService.getAll();
-        List<Categoria> categorias = categoriaService.getAll(); // Obtener categorías
+    public String listarProductos(@RequestParam(required = false) String categoria, Model model) {
+        List<Producto> productos;
+        if (categoria != null && !categoria.isEmpty()) {
+            productos = adminProductoService.getByCategoria(categoria);
+            model.addAttribute("categoriaSeleccionada", categoria); // Mantener la categoría seleccionada
+        } else {
+            productos = adminProductoService.getAll();
+        }
+
+        List<Categoria> categorias = categoriaService.getAll();
         model.addAttribute("productos", productos);
-        model.addAttribute("categorias", categorias); // Pasar categorías a la vista
+        model.addAttribute("categorias", categorias);
+
         return "admin/productos/index";
     }
 
@@ -59,7 +67,7 @@ public class AdminProductosController {
     public String ordenarPorCategoria(String categoria, Model model) {
         List<Producto> productos = adminProductoService.getByCategoria(categoria);
         model.addAttribute("productos", productos);
-        return "productos/lista";  // Aquí reemplaza con la vista correcta que muestra los productos
+        return "productos/lista"; // Aquí reemplaza con la vista correcta que muestra los productos
     }
 
     // Ruta para mostrar el formulario de nuevo producto
