@@ -17,14 +17,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/", "/contacto", "/enviarMensaje", "/css/**", "/js/**", "/images/**").permitAll() // Permitir acceso sin login
+                .requestMatchers("/admin/**").hasRole("ADMIN") // Solo pedir login para /admin/**
                 .anyRequest().permitAll()
             )
+            .csrf(csrf -> csrf.disable()) // Desactivar CSRF para evitar bloqueos en formularios POST
             .formLogin(form -> form
-                .loginPage("/login")
+                .loginPage("/login") // Página de login personalizada
+                .defaultSuccessUrl("/admin", true) // Redirigir al admin tras login
                 .permitAll()
             )
             .logout(logout -> logout
+                .logoutSuccessUrl("/") // Redirige a la página principal tras logout
                 .permitAll()
             );
         return http.build();
@@ -35,7 +39,7 @@ public class SecurityConfig {
         var userDetailsService = new InMemoryUserDetailsManager();
 
         var admin = User.withUsername("admin")
-                .password("{noop}admin")
+                .password("{noop}admin") // `{noop}` desactiva el cifrado, solo para pruebas
                 .roles("ADMIN")
                 .build();
 

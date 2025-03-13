@@ -8,7 +8,7 @@
     <header th:fragment="headerBase">
         <nav class="navbar navbar-expand-lg" style="background-color: #b57f02;">
             <div class="container-fluid">
-                <a class="navbar-brand text-dark" href="#">Panadería</a>
+                <a class="navbar-brand text-dark" th:href="@{/}">Panadería</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -28,7 +28,7 @@
                         </li>
                         <!-- Enlace al panel de administración solo para usuarios con rol ADMIN -->
                         <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                            <a class="nav-link text-dark" th:href="@{/admin}">Admin</a>
+                            <a class="nav-link text-dark" th:href="@{/admin}">Login</a>
                         </li>
                     </ul>
                 </div>

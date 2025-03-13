@@ -7,6 +7,6 @@ import com.app.panaderia.modelo.entidades.Categoria;
 
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+public interface CategoriaRepository extends JpaRepository<Categoria, String> {
     
 }

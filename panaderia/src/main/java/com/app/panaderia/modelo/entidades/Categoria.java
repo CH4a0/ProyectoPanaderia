@@ -11,10 +11,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "categoria")
 public class Categoria {
-    @Id //Primary Key
-    private int id;
+  
 
-    @Column(nullable = false) 
+    @Id
     private String tipo;
 
     @Column(nullable = false) 
@@ -27,8 +26,7 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(int id, String tipo, String descripcion, String imagen) {
-        this.setId(id);
+    public Categoria(String tipo, String descripcion, String imagen) {
         this.setTipo(tipo);
         this.setDescripcion(descripcion);
         this.setImagen(imagen); 
@@ -36,9 +34,6 @@ public class Categoria {
 
 
     // Getters
-    public int getId() {
-        return id;
-    }
 
     public String getTipo() {
         return tipo;
@@ -54,10 +49,6 @@ public class Categoria {
 
     // Setters
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
@@ -72,10 +63,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return 
-                "<" + this.id + ","
-                + this.tipo + ","  
-                + this.descripcion + "," 
-                + this.imagen + ">";
+        return this.tipo;
     }
+    
 }

@@ -1,23 +1,58 @@
-<!-- header.html -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-    <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-    <span>Company Name</span>
+<header th:fragment="headerbase">
+    <!-- Botón para abrir/cerrar el menú lateral -->
+    <button class="btn btn-dark btn-lg position-fixed" type="button" onclick="toggleSidebar()"
+        style="font-size: 1.2rem; padding: 0.5rem 1rem; z-index: 1001; top: 1rem; left: 1rem;">
+        <i class="bi bi-list"></i> Menu
+    </button>
+    <!-- Sidebar -->
+    <nav class="bg-dark text-white sidebar" id="sidebar"
+        style="width: 300px; position: fixed; top: 0; left: 0; height: 100%; z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease;">
+        <div class="p-3 h-100">
+            <h4 class="text-center text-white mb-4" th:href="@{/admin}">Administración</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/productos" onclick="toggleSidebar()">
+                        <i class="bi bi-box-seam"></i> Gestionar Productos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/categorias">
+                        <i class="bi bi-tags-fill"></i> Ver Categorías
+                    </a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/}" onclick="toggleSidebar()">
+                        <i class="bi bi-gear-fill"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Overlay para cerrar el menú al hacer clic fuera -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.style.transform === 'translateX(0%)') {
+                sidebar.style.transform = 'translateX(-100%)';
+                overlay.style.display = 'none';
+            } else {
+                sidebar.style.transform = 'translateX(0%)';
+                overlay.style.display = 'block';
+            }
+        }
+    </script>
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            display: none;
+        }
+    </style>
 </header>
-
-<!-- Sidebar/Menu -->
-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
-  <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
-  </div>
-  <div class="w3-bar-block">
-    <a th:href="@{/}" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a th:href="@{/#showcase}" class="w3-bar-item w3-button w3-hover-white">Showcase</a>
-    <a th:href="@{/#services}" class="w3-bar-item w3-button w3-hover-white">Services</a>
-    <a th:href="@{/#designers}" class="w3-bar-item w3-button w3-hover-white">Designers</a>
-    <a th:href="@{/#packages}" class="w3-bar-item w3-button w3-hover-white">Packages</a>
-    <a th:href="@{/#contact}" class="w3-bar-item w3-button w3-hover-white">Contact</a>
-  </div>
-</nav>
-
-<!-- Overlay Effect for Sidebar -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
