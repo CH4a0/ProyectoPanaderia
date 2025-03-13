@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/admin/layout/base}">
+<head>
+    <title>Categorías</title>
+</head>
+<div layout:fragment="MainBase">
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">Administrar Categorías</h2>
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="/admin/categorias/new" class="btn btn-success">Agregar Nueva Categoría</a>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.id}"></td>
+                    <td><img th:src="${categoria.imagen}" alt="Imagen de la categoría" style="width: 80px; height: 80px; object-fit: cover;"></td>
+                    <td th:text="${categoria.tipo}"></td>
+                    <td th:text="${categoria.descripcion}"></td>
+                    <td>
+                        <a th:href="@{/admin/categorias/edit/{id}(id=${categoria.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/admin/categorias/delete/{id}(id=${categoria.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>
