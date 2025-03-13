@@ -123,9 +123,9 @@ public class AdminProductosController {
             @RequestParam(value = "imagen", required = false) MultipartFile file) {
         if (file != null && !file.isEmpty()) {
             try {
-                Path path = Paths.get("src/main/resources/static/images/" + file.getOriginalFilename());
+                Path path = Paths.get("src/main/resources/static/img/" + file.getOriginalFilename());
                 Files.write(path, file.getBytes());
-                producto.setImagen("/images/" + file.getOriginalFilename());
+                producto.setImagen("/img/" + file.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
             }
