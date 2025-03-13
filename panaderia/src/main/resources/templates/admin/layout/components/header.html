@@ -1,9 +1,9 @@
 <header th:fragment="headerbase">
     <!-- Botón para abrir/cerrar el menú lateral -->
-    <button class="btn btn-dark btn-lg position-fixed" type="button" onclick="toggleSidebar()"
-        style="font-size: 1.2rem; padding: 0.5rem 1rem; z-index: 1001; top: 1rem; left: 1rem;">
-        <i class="bi bi-list"></i> Menu
-    </button>
+    <button class="btn btn-dark btn-sm position-fixed" type="button" onclick="toggleSidebar()" 
+    style="font-size: 1rem; padding: 0.3rem 0.8rem; z-index: 1050; top: 1rem; right: 1rem;">
+<i class="bi bi-list" style="font-size: 1.2rem;"></i> Menu
+</button>   
     <!-- Sidebar -->
     <nav class="bg-dark text-white sidebar" id="sidebar"
         style="width: 300px; position: fixed; top: 0; left: 0; height: 100%; z-index: 1000; transform: translateX(-100%); transition: transform 0.3s ease;">
