@@ -56,7 +56,7 @@
                             <td th:text="${producto.nombre}">Nombre del Producto</td>
                             <td th:text="${producto.categoria.tipo}">Categoría</td>
                             <td>
-                                <img th:src="${producto.imagen}" alt="Imagen" class="rounded-circle" width="50">
+                                <img th:src="@{${producto.imagen}}" alt="Imagen" class="rounded-circle" width="50">
                             </td>
                             <td>
                                 <a th:href="@{/admin/productos/editar/{id}(id=${producto.id})}"

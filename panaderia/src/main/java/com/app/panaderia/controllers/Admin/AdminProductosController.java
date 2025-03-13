@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.Optional;
+import java.util.UUID;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -40,7 +42,7 @@ public class AdminProductosController {
         List<Producto> productos;
         if (categoria != null && !categoria.isEmpty()) {
             productos = adminProductoService.getByCategoria(categoria);
-            model.addAttribute("categoriaSeleccionada", categoria); 
+            model.addAttribute("categoriaSeleccionada", categoria);
         } else {
             productos = adminProductoService.getAll();
         }
@@ -67,12 +69,12 @@ public class AdminProductosController {
     // Ruta para procesar la edición de un producto
     @PostMapping("/editar/{id}")
     public String actualizarProducto(@PathVariable("id") int id,
-                                     @RequestParam String nombre,
-                                     @RequestParam String descripcion,
-                                     @RequestParam double precio,
-                                     @RequestParam String categoria,
-                                     @RequestParam(required = false) MultipartFile imagen,
-                                     Model model) {
+            @RequestParam String nombre,
+            @RequestParam String descripcion,
+            @RequestParam double precio,
+            @RequestParam String categoria,
+            @RequestParam(required = false) MultipartFile imagen,
+            Model model) {
         Optional<Producto> productoOpt = productoRepository.findById(id);
         if (productoOpt.isPresent()) {
             Producto producto = productoOpt.get();
@@ -119,20 +121,45 @@ public class AdminProductosController {
 
     // Ruta para procesar el formulario de nuevo producto
     @PostMapping("/new")
-    public String guardarNuevoProducto(Producto producto,
-            @RequestParam(value = "imagen", required = false) MultipartFile file) {
-        if (file != null && !file.isEmpty()) {
-            try {
-                Path path = Paths.get("src/main/resources/static/img/" + file.getOriginalFilename());
-                Files.write(path, file.getBytes());
-                producto.setImagen("/img/" + file.getOriginalFilename());
-            } catch (IOException e) {
-                e.printStackTrace();
+    public String guardarNuevoProducto(@ModelAttribute Producto producto,
+                                       @RequestParam("file") MultipartFile file) {
+        try {
+            System.out.println("Iniciando guardado de producto...");
+    
+            // 📌 Definir el directorio externo donde se guardarán las imágenes
+            String uploadDir = System.getProperty("user.dir") + "/img/"; // ⬅️ Guardar en "img/" en la raíz
+            Path directory = Paths.get(uploadDir);
+    
+            // ⚠️ Crear la carpeta si no existe
+            if (!Files.exists(directory)) {
+                Files.createDirectories(directory);
+                System.out.println("Directorio creado: " + directory.toAbsolutePath());
             }
-        } else {
-            producto.setImagen("/img/default.jpg"); // Imagen por defecto
+    
+            if (!file.isEmpty()) {
+                // 📌 Generar un nombre único para evitar duplicados
+                String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                Path path = directory.resolve(filename);
+    
+                // Guardar la imagen en la carpeta "img"
+                Files.write(path, file.getBytes());
+    
+                // 📌 Guardar solo la ruta relativa en la BD
+                producto.setImagen("/img/" + filename);
+            } else {
+                producto.setImagen("/img/default.png"); // Imagen por defecto si no se sube ninguna
+            }
+    
+            System.out.println("Guardando producto en la base de datos: " + producto);
+            productoRepository.save(producto);
+            System.out.println("Producto guardado con éxito.");
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error al guardar el producto.");
         }
-        adminProductoService.create(producto); // Crear producto
-        return "redirect:/admin/productos"; // Redirigir al listado de productos
+        return "redirect:/admin/productos";
     }
+    
+
 }
