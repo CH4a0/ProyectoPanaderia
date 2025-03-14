@@ -1,7 +1,6 @@
 -- Tabla categoria (padre)
 create table categoria (
-    id int primary key,
-    tipo varchar(50) unique,  -- <- ahora es UNIQUE
+    tipo varchar(50) PRIMARY KEY,  -- <- ahora es UNIQUE
     descripcion varchar(100),
     imagen varchar(255)
 );
