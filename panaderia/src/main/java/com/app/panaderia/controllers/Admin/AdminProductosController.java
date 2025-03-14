@@ -120,7 +120,6 @@ public class AdminProductosController {
     }
 
     @PostMapping("/new")
-<<<<<<< HEAD
     public String guardarNuevoProducto(Producto producto,
             @RequestParam(value = "imagen", required = false) MultipartFile file) {
         if (file != null && !file.isEmpty()) {
@@ -163,47 +162,3 @@ public class AdminProductosController {
         return "redirect:/admin/productos";
     }
 }        
-=======
-    public String guardarNuevoProducto(@ModelAttribute Producto producto,
-                                       @RequestParam("file") MultipartFile file) {
-        try {
-            System.out.println("Iniciando guardado de producto...");
-    
-            // 📌 Definir el directorio externo donde se guardarán las imágenes
-            String uploadDir = System.getProperty("user.dir") + "/imagenes/"; // ⬅️ Guardar en "img/" en la raíz
-            Path directory = Paths.get(uploadDir);
-    
-            // ⚠️ Crear la carpeta si no existe
-            if (!Files.exists(directory)) {
-                Files.createDirectories(directory);
-                System.out.println("Directorio creado: " + directory.toAbsolutePath());
-            }
-    
-            if (!file.isEmpty()) {
-                // 📌 Generar un nombre único para evitar duplicados
-                String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-                Path path = directory.resolve(filename);
-    
-                // Guardar la imagen en la carpeta "img"
-                Files.write(path, file.getBytes());
-    
-                // 📌 Guardar solo la ruta relativa en la BD
-                producto.setImagen("/imagenes/" + filename);
-            } else {
-                producto.setImagen("/img/default.png"); // Imagen por defecto si no se sube ninguna
-            }
-    
-            System.out.println("Guardando producto en la base de datos: " + producto);
-            productoRepository.save(producto);
-            System.out.println("Producto guardado con éxito.");
-    
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error al guardar el producto.");
-        }
-        return "redirect:/admin/productos";
-    }
-    
-
-}
->>>>>>> 5dbc0b6c2237baf1bd609022992d761546a93e25
