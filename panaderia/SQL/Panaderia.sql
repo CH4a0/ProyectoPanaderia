@@ -17,11 +17,11 @@ CREATE TABLE productos (
     FOREIGN KEY (categoria) REFERENCES categoria(tipo)
 ) AUTO_INCREMENT=56;
 
-INSERT INTO categoria (id, tipo, descripcion, imagen) VALUES
-(1, 'Dulce', 'Productos de sabor dulce', '/img/categorias/dulces.jpeg'),
-(2, 'Salado', 'Productos de sabor salado', '/img/categorias/salado.jpeg'),
-(3, 'Mixto', 'Productos que combinan dulce y salado', '/img/categorias/mixto.jpeg'),
-(4, 'Pan', 'Todo tipo de panes', '/img/categorias/pan.jpeg');
+INSERT INTO categoria (tipo, descripcion, imagen) VALUES
+('Dulce', 'Productos de sabor dulce', '/img/categorias/dulces.jpeg'),
+('Salado', 'Productos de sabor salado', '/img/categorias/salado.jpeg'),
+('Mixto', 'Productos que combinan dulce y salado', '/img/categorias/mixto.jpeg'),
+('Pan', 'Todo tipo de panes', '/img/categorias/pan.jpeg');
 
 -- Productos Dulces (20)
 INSERT INTO productos (id, nombre, categoria, descripcion, precio, imagen) VALUES
