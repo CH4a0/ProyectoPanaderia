@@ -8,15 +8,16 @@ create table categoria (
 
 
 -- Tabla productos (hija)
-create table productos (
-    id int primary key,
-    nombre varchar(50),
+CREATE TABLE productos ( 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
     categoria VARCHAR(50),
-    descripcion varchar(100),
-    precio decimal(10,2) not null,
-    imagen varchar(255),
-    foreign key (categoria) references categoria(tipo)
-);
+    descripcion VARCHAR(100),
+    precio DECIMAL(10,2) NOT NULL,
+    imagen VARCHAR(255),
+    FOREIGN KEY (categoria) REFERENCES categoria(tipo)
+) AUTO_INCREMENT=56;
+
 INSERT INTO categoria (id, tipo, descripcion, imagen) VALUES
 (1, 'Dulce', 'Productos de sabor dulce', '/img/categorias/dulces.jpeg'),
 (2, 'Salado', 'Productos de sabor salado', '/img/categorias/salado.jpeg'),
