@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,26 +72,46 @@ public class AdminProductosController {
         return "admin/productos/new"; // Asegúrate de que esta ruta coincida con la ubicación de tu plantilla
     }
 
-    // Ruta para procesar el formulario de nuevo producto
     @PostMapping("/new")
     public String guardarNuevoProducto(Producto producto,
             @RequestParam(value = "imagen", required = false) MultipartFile file) {
         if (file != null && !file.isEmpty()) {
             try {
+                // Obtener la categoría del producto
+                String categoria = producto.getCategoria().getTipo().toLowerCase();
+    
+                // Definir la ruta de almacenamiento basada en la categoría
+                String rutaBase = "src/main/resources/static/img/productos/";
+                String rutaCategoria = switch (categoria) {
+                    case "dulce" -> "dulces/";
+                    case "salado" -> "salado/";
+                    case "mixto" -> "mixto/";
+                    case "pan" -> "pan/";
+                    default -> "otros/";
+                };
+    
+                // Construir la ruta completa para el almacenamiento
+                String rutaCompleta = rutaBase + rutaCategoria + file.getOriginalFilename();
+                Path path = Paths.get(rutaCompleta);
+    
                 // Guardar el archivo en el sistema de archivos
-                Path path = Paths.get("src/main/resources/static/images/" + file.getOriginalFilename());
                 Files.write(path, file.getBytes());
-                producto.setImagen("/images/" + file.getOriginalFilename());
+    
+                // Guardar la ruta relativa en la base de datos
+                producto.setImagen("/img/productos/" + rutaCategoria + file.getOriginalFilename());
+    
             } catch (IOException e) {
                 e.printStackTrace();
                 // Manejar el error de escritura del archivo
+                producto.setImagen("/img/default.jpg"); // Imagen por defecto en caso de error
             }
         } else {
-            // Si no se proporciona una imagen, puedes establecer una imagen por defecto o
-            // dejar el campo vacío
-            producto.setImagen("/img/default.jpg"); // Ruta a una imagen por defecto
+            // Si no hay imagen, asignar una imagen por defecto
+            producto.setImagen("/img/default.jpg");
         }
+    
+        // Guardar el producto en la base de datos
         adminProductoService.create(producto);
-        return "redirect:/admin/productos"; // Redirigir al listado de productos después de guardar
+        return "redirect:/admin/productos";
     }
-}
+}        

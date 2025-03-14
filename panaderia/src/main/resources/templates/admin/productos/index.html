@@ -42,7 +42,9 @@
                     <tr th:each="producto : ${productos}">
                         <td th:text="${producto.nombre}">Nombre del Producto</td>
                         <td th:text="${producto.categoria.tipo}">Categoría</td>
-                        <td><img th:src="${producto.imagen}" alt="Imagen" class="rounded-circle" width="50"></td>
+                        <td>
+                            <img th:src="@{${producto.imagen}}" alt="Imagen del producto" class="rounded-circle" width="50">
+                        </td>                       
                         <td>
                             <a th:href="@{/admin/productos/editar/{id}(id=${producto.id})}" class="btn btn-primary btn-sm">
                                 <i class="bi bi-pencil"></i>
